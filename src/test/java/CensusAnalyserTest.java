@@ -9,6 +9,7 @@ public class CensusAnalyserTest {
     private static final String WRONG_CSV_FILE_PATH = "./src/main/resources/IndiaStateCensusData.csv";
     private static final String WRONG_CSV_TYPE = "./src/test/resources/wrongFile.txt";
     private static final String SAMPLE_CSV_DELIMITERS = "./src/test/resources/SampleFileDelimiter.csv";
+    private static final String SAMPLE_CSV_HEADER = "./src/test/resources/SampleFileHeader.csv";
 
 
     @Test
@@ -51,6 +52,18 @@ public class CensusAnalyserTest {
             ExpectedException exceptionRule = ExpectedException.none();
             exceptionRule.expect(CensusAnalyserException.class);
             censusAnalyser.loadIndiaCensusData(SAMPLE_CSV_DELIMITERS);
+        }catch(CensusAnalyserException  e){
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.UNABLE_TO_PARSE, e.exceptionType);
+        }
+    }
+
+    @Test
+    public void givenIndiaCensusData_WhenHeaderIncorrect_ShouldThrowException() {
+        try{
+            CensusAnalyser censusAnalyser = new CensusAnalyser();
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(CensusAnalyserException.class);
+            censusAnalyser.loadIndiaCensusData(SAMPLE_CSV_HEADER);
         }catch(CensusAnalyserException  e){
             Assert.assertEquals(CensusAnalyserException.ExceptionType.UNABLE_TO_PARSE, e.exceptionType);
         }
