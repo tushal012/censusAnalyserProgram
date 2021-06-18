@@ -70,12 +70,12 @@ public class CensusAnalyserTest {
         }
     }
 
-  /*  @Test
+   @Test
     public void givenIndianStateCodeCSVFileReturnsCorrectRecords() {
         try {
             CensusAnalyser censusAnalyser = new CensusAnalyser();
             int numOfRecords = censusAnalyser.loadIndiaCensusData(INDIA_STATE_CODE_CSV_FILE_PATH);
             Assert.assertEquals(37,numOfRecords);
         } catch (CensusAnalyserException e) { }
-    }*/
+    }
 }
