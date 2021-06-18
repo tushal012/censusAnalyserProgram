@@ -43,4 +43,16 @@ public class CensusAnalyserTest {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.NOT_A_CSV_TYPE,e.exceptionType);
         }
     }
+
+    @Test
+    public void givenIndiaCensusData_WhenDelimiterIncorrect_ShouldThrowException() {
+        try{
+            CensusAnalyser censusAnalyser = new CensusAnalyser();
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(CensusAnalyserException.class);
+            censusAnalyser.loadIndiaCensusData(SAMPLE_CSV_DELIMITERS);
+        }catch(CensusAnalyserException  e){
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.UNABLE_TO_PARSE, e.exceptionType);
+        }
+    }
 }
